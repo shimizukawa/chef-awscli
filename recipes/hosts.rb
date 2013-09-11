@@ -17,15 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe "awscli::default"  #TODO: not need include if aws command provided or not ec2 environment.
-
 env_name = node.my_environment #FIXME: chef-solo (11.4.4) did not support "node.chef_environment" yet.
-
-hosts = Chef::Util::FileEdit.new("/etc/hosts")
 bag_name = node.awscli.bag_name
 item = data_bag_item(bag_name, env_name)
 
 if item
+  if item.find{|id, h| h['ipaddr_aws_private']}
+    include_recipe "awscli::default"
+  end
+
   item.each do |id, h|
     unless h['ipaddr_aws_private'] || h['ipaddr']
       Chef::Log.warn("data_bags: #{bag_name}/#{env_name} need a ipaddr attribute for '#{id}'.")
