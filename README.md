@@ -45,26 +45,26 @@ attributes.
 Data bags
 ----------
 
+file: `data_bags/<bag_name>/<my_environment>.json` used by `awscli::hosts`:
 
-- file: `data_bags/<bag_name>/<my_environment>.json` used by `awscli::hosts`
-
-  {
-    "id": "production",
-    "host-workstation": {
-      "ipaddr": "192.168.1.1",
-      "aliases": [
-        "host-ap1",
-        "host-ap2"
-      ]
-    },
-    "host-db1": {
-      "ipaddr_aws_private": true,
-      "aliases": [
-        "db1"
-      ]
-    }
+```json
+{
+  "id": "production",
+  "host-workstation": {
+    "ipaddr": "192.168.1.1",
+    "aliases": [
+      "host-ap1",
+      "host-ap2"
+    ]
+  },
+  "host-db1": {
+    "ipaddr_aws_private": true,
+    "aliases": [
+      "db1"
+    ]
   }
-
+}
+```
 
 Recipes
 -------
