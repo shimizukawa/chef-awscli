@@ -63,10 +63,12 @@ define :install_awscli, :action => :install, :owner => 'root', :group => 'root',
     end
 
     execute "#{virtualenv_cmd} #{aws_env_path}" do
+      environment ({"HOME" => "/root"})
       not_if {File.exists?(aws_cmd)}
     end
 
     execute "#{aws_pip_cmd} install awscli" do
+      environment ({"HOME" => "/root"})
       not_if {File.exists?(aws_cmd)}
     end
 
