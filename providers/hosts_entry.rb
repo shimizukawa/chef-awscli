@@ -34,7 +34,7 @@ def load_current_resource
     @ip_address = load_aws_private_ipaddrs[@hostname]
   end
   unless @ip_address
-    Chef::Log.warn("data_bags: hosts.json #{h['id']} want use ipaddr_aws_private, but aws IP address can't detect.")
+    Chef::Log.warn("data_bags: hosts.json #{@hostname} want use ipaddr_aws_private, but aws IP address can't detect.")
   end
 end
 
